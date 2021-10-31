@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Home</title>
+    {% endif %}
+</head>
+<body>
+    <h1>Welcome {{name}}, here are top destinations!</h1>
+    <a href="https://www.google.com">goooogle</a>
+    {% if top_cities %}
+        <ul>
+            {% for city in top_cities %}
+                <li>{{city.name}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <p>No city added yet</p>
+    {% endif %}
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        {% for m in messages %}
+        <b>{{m}}</b>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
