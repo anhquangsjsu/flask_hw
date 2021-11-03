@@ -1,6 +1,7 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 import os
+from flask_sqlalchemy import SQLAlchemy
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 myapp_obj = Flask(__name__)
@@ -11,5 +12,6 @@ myapp_obj.config.from_mapping(
 )
 
 db = SQLAlchemy(myapp_obj)
+db.create_all()
 
-from myapp import routes
+from myapp import routes, models
